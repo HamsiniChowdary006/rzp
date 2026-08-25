@@ -1,0 +1,29 @@
+services:
+  backend:
+    build: .
+    command: uvicorn api.app:app --host 0.0.0.0 --port 8000
+    env_file: .env
+    environment:
+      AFC_AUDIT_LOG_PATH: /app/runtime/audit_log.jsonl
+    ports:
+      - "8000:8000"
+    volumes:
+      - audit-data:/app/runtime
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  frontend:
+    build: .
+    command: streamlit run ui/dashboard.py --server.address 0.0.0.0 --server.port 8501
+    env_file: .env
+    environment:
+      AFC_API_URL: http://backend:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "8501:8501"
+volumes:
+  audit-data:

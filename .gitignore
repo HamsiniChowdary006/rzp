@@ -1,0 +1,77 @@
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+.env
+
+# Environment files (secrets)
+.env
+*.env
+.env.local
+.env.*.local
+*.key
+*.pem
+
+# Testing & coverage artifacts
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+
+# Local runtime data & logs
+data/audit_log.jsonl
+*.log
+*.sqlite
+*.db
+*.sqlite3
+
+# OS/Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# IDE specific
+.project
+.pydevproject
+.settings/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Type checking
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Local configuration
+local_settings.py
+*.local.yml
+*.local.yaml
+
+# PyInstaller
+*.manifest
+*.spec
